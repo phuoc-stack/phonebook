@@ -1,16 +1,18 @@
 //create and express app stored in the app variable
 const express=require('express')
-const morgan = require('morgan')
+const app=express()
+
+app.use(express.json())
 const cors = require('cors')
+
+const morgan = require('morgan')
 //allow for requests from all origins
 app.use(cors())
-const app=express()
 app.use(morgan('dev'))
 
 const date_time=new Date()
 
 //activate json parser
-app.use(express.json())
 let persons = [
     { 
       "id": "1",
