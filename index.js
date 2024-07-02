@@ -35,6 +35,11 @@ let persons = [
       "number": "39-23-6423122"
     }
 ]
+//Root path route
+app.get('/', (request, response) => {
+    response.send('Welcome to the Phonebook API');
+  });
+
 app.get('/info',(request,response)=>{
     response.send(`
         <p>Phonebook has info for ${persons.length} people
