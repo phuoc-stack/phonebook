@@ -40,11 +40,11 @@ app.get('/', (request, response) => {
     response.send('Welcome to the Phonebook API');
   });
 
-// app.get('/info',(request,response)=>{
-//     response.send(`
-//         <p>Phonebook has info for ${persons.length} people
-//         </p><p>${date_time.toString()}</p>`)
-// })
+app.get('/info',(request,response)=>{
+    response.send(`
+        <p>Phonebook has info for ${persons.length} people
+        </p><p>${date_time.toString()}</p>`)
+})
 
 app.get('/api/persons',(request,response)=>{
     response.json(persons)
