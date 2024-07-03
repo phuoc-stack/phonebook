@@ -90,16 +90,16 @@ app.post('/api/phonebook',(request,response)=>{
     //         error:'name must be unique'
     //     }) 
     // }
-    // if (body.name===undefined){
-    //     return response.status(400).json({
-    //         error:'name missing'
-    //     })
-    // }
-    // if (body.number=undefined){
-    //     return response.status(400).json({
-    //         error:'number missing'
-    //     })
-    // }
+    if (!body.name){
+        return response.status(400).json({
+            error:'name missing'
+        })
+    }
+    if (!body.number){
+        return response.status(400).json({
+            error:'number missing'
+        })
+    }
     const person= new Person({
         name:body.name,
         number:body.number,
@@ -109,6 +109,8 @@ app.post('/api/phonebook',(request,response)=>{
     // response.json(person)
     person.save().then(savedPerson=>{
         response.json(savedPerson)
+    }).catch(error=>{
+        response.status(500).json({error: 'Failed to save person to MongoDB'})
     })
 })
 
