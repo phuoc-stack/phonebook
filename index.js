@@ -53,10 +53,12 @@ app.get('/info',(request,response)=>{
 //     response.json(persons)
 // })
 
-app.get('/api/persons',(request,response)=>{
+app.get('/api/phonebook',(request,response)=>{
     Person.find({}).then(persons=>{
         response.json(persons)
-    })
+    }).catch(error => {
+        response.status(500).json({ error: 'Failed to fetch data from MongoDB' });
+      });
 })
 
 app.get('/api/persons/:id',(request, response)=>{
