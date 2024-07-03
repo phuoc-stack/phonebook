@@ -61,7 +61,7 @@ app.get('/api/phonebook',(request,response)=>{
       });
 })
 
-app.get('/api/persons/:id',(request, response)=>{
+app.get('/api/phonebook/:id',(request, response)=>{
     const id= request.params.id
     const person=persons.find(person=>person.id===id)
     if (person){
@@ -71,7 +71,7 @@ app.get('/api/persons/:id',(request, response)=>{
     }
 })
 
-app.delete('/api/persons/:id',(request,response)=>{
+app.delete('/api/phonebook/:id',(request,response)=>{
     const id=request.params.id
     persons=persons.filter(person=>person.id!=id)
     response.status(204).end()
@@ -82,7 +82,7 @@ app.delete('/api/persons/:id',(request,response)=>{
 //     return String(Math.floor(Math.random()*(1000000-5)+5))
 // }
 
-app.post('/api/persons',(request,response)=>{
+app.post('/api/phonebook',(request,response)=>{
     const body=request.body
     const contact=persons.find(person=>person.name===body.name)
     // if (contact){
