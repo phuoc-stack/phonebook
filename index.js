@@ -73,8 +73,19 @@ app.get('/api/phonebook/:id',(request, response)=>{
 
 app.delete('/api/phonebook/:id',(request,response)=>{
     const id=request.params.id
-    persons=persons.filter(person=>person.id!=id)
-    response.status(204).end()
+    // 
+    Person.findByIdAndDelete(id)
+    .then(result=>{
+        if (result){
+        response.status(204).end();
+    } else {
+        response.status(404).json({error: 'Not found'})
+    }
+    })
+    .catch(error=>{
+        console.log(error);
+        response.status(500).json({error:'Failed to delete from MongoDB'})
+    })
 })
 
 //generate new id number
