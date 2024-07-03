@@ -1,4 +1,5 @@
 //create and express app stored in the app variable
+require('dotenv').config();
 const express=require('express')
 const app=express()
 
